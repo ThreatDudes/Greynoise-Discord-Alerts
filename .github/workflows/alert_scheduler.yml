@@ -1,8 +1,9 @@
+name: "alert_scheduler"
 on:
   schedule:
     - cron: '15 * * * *' # 15m - every 15 minutes
     - cron: '0 * * * *' # 1h - every hour
-    - cron: '0 0 * * *' # 1d0 - everyday at 0:00 UTC
+    - cron: '0 0 * * *' # 1d0 - everyday at 00:00 UTC
     - cron: '0 8 * * *' # 1d8 - everyday at 08:00 UTC
     - cron: '0 12 * * *' # 1d12 - everyday at 12:00 UTC
     - cron: '0 14 * * *' # 1d14 - everyday at 14:00 UTC
