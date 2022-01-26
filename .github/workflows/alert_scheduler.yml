@@ -16,11 +16,12 @@ jobs:
     steps:
       - name: check path
         run: |
-          pwd
+          find /home/runner/
           cd ~/
           pwd
           echo $GITHUB_WORKSPACE
       - name: lastseen1d_15m
+        working-directory: ./
         if: github.event.schedule == '15 * * * *'
         env:
           GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
