@@ -19,11 +19,12 @@ jobs:
         env:
           GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        working-directory: ./
-        run: python3 ./run-greynoise-query.py ./gnql/lastseen1d.gnql
+        run: ls -l
+        run: pwd
+        run: python3 run-greynoise-query.py gnql/lastseen1d.gnql
       - name: NewQueryName
         if: github.event.schedule == '0 14 * * *'
         env:
             GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
             DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: echo 'python3 ./run-greynoise-query.py ./gnql/NewQueryName.gnql'
+        run: echo 'python3 run-greynoise-query.py gnql/NewQueryName.gnql'
