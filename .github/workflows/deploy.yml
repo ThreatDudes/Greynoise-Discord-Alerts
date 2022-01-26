@@ -1,0 +1,21 @@
+on:
+  schedule:
+    - cron: '* * * * *' # 1m - every minute
+    - cron: '0 * * * *' # 1h - every hour
+    - cron: '5 0 * * *' # 1d0 - everyday at 0:05 UTC
+    - cron: '0 0 * * *' # 1d0 - everyday at 0:00 UTC
+    - cron: '0 8 * * *' # 1d8 - everyday at 08:00 UTC
+    - cron: '0 12 * * *' # 1d12 - everyday at 12:00 UTC
+    - cron: '0 14 * * *' # 1d14 - everyday at 14:00 UTC
+    - cron: '0 16 * * *' # 1d16 - everyday at 16:00 UTC
+    - cron: '0 20 * * *' # 1d20 - everyday at 20:00 UTC
+
+jobs:
+  automate_alerts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Not on Monday or Wednesday
+        if: github.event.schedule = '5 0 * * *'
+        run: echo "Hey it works"
+      - name: Every time
+        run: echo "This step will always run"
