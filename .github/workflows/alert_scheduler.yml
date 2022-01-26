@@ -13,8 +13,8 @@ jobs:
   alert_scheduler:
     runs-on: ubuntu-latest
     steps:
-      - name: Not on Monday or Wednesday
-        if: github.event.schedule = '15 0 * * *'
+      - name: lastseen1d_15m
+        if: github.event.schedule = '15 * * * *'
         env:
           GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
