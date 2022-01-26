@@ -13,8 +13,8 @@ jobs:
   alert_scheduler:
     runs-on: ubuntu-latest
     steps:
-      - name: lastseen1d_15m
-        if: github.event.schedule = '15 * * * *'
+      - name: lastseen1d_1d14
+        if: github.event.schedule = '0 14 * * *'
         env:
           GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
