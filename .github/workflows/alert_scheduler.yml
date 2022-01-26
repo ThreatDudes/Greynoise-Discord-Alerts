@@ -19,6 +19,7 @@ jobs:
           pwd
           cd ~/
           pwd
+          echo $GITHUB_WORKSPACE
       - name: lastseen1d_15m
         if: github.event.schedule == '15 * * * *'
         env:
@@ -27,6 +28,7 @@ jobs:
         run: |
           cd ~/
           pwd
+          echo $GITHUB_WORKSPACE
           python3 run-greynoise-query.py gnql/lastseen1d.gnql
       - name: NewQueryName
         if: github.event.schedule == '0 14 * * *'
