@@ -1,8 +1,7 @@
 on:
   schedule:
-    - cron: '* * * * *' # 1m - every minute
+    - cron: '15 * * * *' # 15m - every 15 minutes
     - cron: '0 * * * *' # 1h - every hour
-    - cron: '15 0 * * *' # 1d0 - everyday at 0:15 UTC
     - cron: '0 0 * * *' # 1d0 - everyday at 0:00 UTC
     - cron: '0 8 * * *' # 1d8 - everyday at 08:00 UTC
     - cron: '0 12 * * *' # 1d12 - everyday at 12:00 UTC
@@ -16,6 +15,9 @@ jobs:
     steps:
       - name: Not on Monday or Wednesday
         if: github.event.schedule = '15 0 * * *'
-        run: echo "Hey it works"
+        env:
+          GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python3 run-greynoise-query.py gnql/lastseen1d.gnql
       - name: Every time
         run: echo "This step will always run"
