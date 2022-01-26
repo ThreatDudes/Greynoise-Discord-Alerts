@@ -24,10 +24,7 @@ jobs:
           python3 -m pip install --upgrade pip
       - name: check path
         run: |
-          find /home/runner/
-          cd ~/
-          pwd
-          echo $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE
       - name: lastseen1d_15m
         working-directory: ./
         if: github.event.schedule == '15 * * * *'
@@ -35,9 +32,7 @@ jobs:
           GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
-          cd ~/
-          pwd
-          echo $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE
           python3 run-greynoise-query.py gnql/lastseen1d.gnql
       - name: NewQueryName
         if: github.event.schedule == '0 14 * * *'
