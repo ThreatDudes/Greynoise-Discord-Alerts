@@ -24,12 +24,9 @@ jobs:
           cd $GITHUB_WORKSPACE
           python3 -m pip install --upgrade pip
           python3 -m pip install -r requirements.txt
-      - name: check path
-        run: |
-          cd $GITHUB_WORKSPACE
-      - name: lastseen1d_15m
+      - name: lastseen1d_1d14
         working-directory: ./
-        if: github.event.schedule == '15 * * * *'
+        if: github.event.schedule == '0 14 * * *'
         env:
           GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
