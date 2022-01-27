@@ -26,13 +26,16 @@ You must use the syntax of GitHub actions to schedule new alerts.
 3. commit changes and push to the directory.
 
 New automated jobs have a syntax like this:
-```
-- name: NewQueryName
-if: github.event.schedule = '0 14 * * *'
-env:
-    GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
-    DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-run: python3 run-greynoise-query.py gnql/NewQueryName.gnql
+```yaml
+  - name: lastseen1d_15m
+    working-directory: ./
+    if: github.event.schedule == '15 * * * *'
+    env:
+        GREYNOISE_API_KEY: ${{ secrets.GREYNOISE_API_KEY }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+    run: |
+        cd $GITHUB_WORKSPACE
+        python3 run-greynoise-query.py gnql/lastseen1d.gnql
 ```
 The `if` statement refers to which of the above cron schedules in the `on` section to watch for. If there isn't a schedule timing you like, just append a new one and match it to the `if` statement.
 
