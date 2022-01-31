@@ -2,21 +2,21 @@
 
 [![alert_scheduler](https://github.com/ThreatDudes/Greynoise-Discord-Alerts/actions/workflows/alert_scheduler.yml/badge.svg?event=schedule)](https://github.com/ThreatDudes/Greynoise-Discord-Alerts/actions/workflows/alert_scheduler.yml)
 
-Sends Greynoise query results to a Discord channel on a scheduled basis.
+Sends GreyNoise query results to a Discord channel on a scheduled basis.
 
-## Adding Greynoise Key and Discord Webhook URL to repo environment variables
+## Adding GreyNoise Key and Discord Webhook URL to repo environment variables
 You are going to need the following items:
-- `GREYNOISE_API_KEY`: an API key from your [GreyNoise](https://www.greynoise.io/viz/) account.
+- `GREYNOISE_API_KEY`: an API key from your [GreyNoise](https://www.greynoise.io/viz/account/) account.
 - `DISCORD_WEBHOOK_URL`: a Discord Webhook endpoint that is specific to the Discord server and channel.
 
-GreyNoise API keys are available at Community and Enterprise levels. [Go to your account details to get your key.](https://www.greynoise.io/viz/account/)
+GreyNoise API keys are available at Community and Enterprise levels, however, using the GNQL endpoint requires an Enterprise subscription or Enterprise Trial. [Go to your account details to get your key.](https://www.greynoise.io/viz/account/)
 
 [Read here on how to generate a Discord webhook url.](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
 
-Once you have forked this project to your own repository, you can start setting the environment variables and the GitHub Actions. You must then save both the GreyNoise API key and Discord URL to your new porject repository as **Repository Secrets for GitHub Actions**. Read here for the instructions on adding them to your repository: [Creating encrypted secrets for GitHub Actions](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
+Once you have forked this project to your own repository, you can start setting the environment variables, and the GitHub Actions. You must then save both the GreyNoise API key and Discord URL to your new project repository as **Repository Secrets for GitHub Actions**. Read here for the instructions on adding them to your repository: [Creating encrypted secrets for GitHub Actions](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 
 ## Adding new queries
-To add a new query, simply past a [`GNQL` query](https://github.com/GreyNoise-Intelligence/GNQL) into a file with a useful name, e.g. `maliciousNonBot.gnql` or `firstSeen_1d.gnql`.
+To add a new query, simply past a [`GNQL` query](https://docs.greynoise.io/reference/gnqlquery-1) into a file with a useful name, e.g. `maliciousNonBot.gnql` or `firstSeen_1d.gnql`.
 
 ## Scheduling new reports
 You must use the syntax of GitHub actions to schedule new alerts.
@@ -41,4 +41,4 @@ The `if` statement refers to which of the above cron schedules in the `on` secti
 
 ## References
 - [GitHub Actions - `Schedule` Event](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
-- [GreyNoise Query Language](https://github.com/GreyNoise-Intelligence/GNQL)
+- [GreyNoise Query Language](https://docs.greynoise.io/reference/gnqlquery-1)

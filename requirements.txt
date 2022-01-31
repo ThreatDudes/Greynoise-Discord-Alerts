@@ -1,2 +1,3 @@
 pandas==1.3.5
 requests==2.27.1
+greynoise==1.1.0
